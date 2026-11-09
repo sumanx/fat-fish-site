@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fat Fish — Support</title>
+<meta name="description" content="Support page for Fat Fish, a native mobile client for DeepSeek Harness (DSH).">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Fat Fish</h1>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="zh/">中文</a>
+    </nav>
+  </header>
+  <p class="lede">A native mobile client for DeepSeek Harness (DSH).</p>
+
+  <section>
+    <h2>What this app is</h2>
+    <p>Fat Fish connects your phone to a DeepSeek Harness Host that you run yourself (or that someone runs for you). It is a client only: it provides no AI service, has no account system, and contains no demo or hidden content. Without a Host, the app opens to an empty state with an “Add a Host” entry.</p>
+  </section>
+
+  <section>
+    <h2>Requirements</h2>
+    <ul>
+      <li>iOS 15 or later.</li>
+      <li>A reachable DeepSeek Harness Host. Either exposed over HTTPS, reachable through SSH, or published behind a reverse proxy / relay.</li>
+      <li>The Host address and its access token (the app can find the token from the DSH startup log when connecting over SSH).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Getting started</h2>
+    <h3>1. Add a Host</h3>
+    <p>Open the sidebar, tap <em>Add a Host</em>, then choose a connection type:</p>
+    <ul>
+      <li><strong>Direct</strong> — the HTTPS address of the Host plus its access token. A self-signed certificate is accepted only after you verify its SHA-256 fingerprint.</li>
+      <li><strong>SSH</strong> — host, port, username, and either a password or a private key. The app logs in over SSH, looks up the access token in the DSH startup log (or uses the one you enter), and tunnels requests to <code>127.0.0.1</code> on that machine.</li>
+      <li><strong>Relay</strong> — the address of a DSH server published behind a reverse proxy.</li>
+    </ul>
+    <h3>2. Pick a session</h3>
+    <p>Sessions, workspaces, and files all come from the Host. Nothing is stored locally except drafts and navigation state.</p>
+    <h3>3. Chat</h3>
+    <p>Send messages, answer questions, approve tool calls, and follow background tasks. The composer only becomes active once the Host connection and local draft storage are both ready.</p>
+  </section>
+
+  <section>
+    <h2>Frequently asked</h2>
+    <h3>Do I need an account?</h3>
+    <p>No. Fat Fish has no sign-up, no login, and no subscription. You connect directly to your own Host.</p>
+    <h3>Why is the composer greyed out / showing “Preparing”?</h3>
+    <p>The app is still finishing the connection or the local draft store. If it stays that way, check that the Host address and token are correct, then reconnect from the sidebar.</p>
+    <h3>Where are my credentials stored?</h3>
+    <p>In the app’s private storage on this device only. They are never uploaded anywhere else, and deleting a Host removes its saved credentials.</p>
+    <h3>Why did the app ask me to verify a fingerprint?</h3>
+    <p>Because the certificate or SSH host key is not signed by a public authority. The app refuses to connect until you confirm the fingerprint out of band. If the fingerprint changes later, the connection is rejected again.</p>
+    <h3>A self-signed certificate is rejected. What now?</h3>
+    <p>Use the SSH connection type instead, or install a certificate signed by a trusted authority. Fat Fish never silently accepts every certificate.</p>
+    <h3>Does the app send data anywhere else?</h3>
+    <p>No. It has no analytics SDK, no crash reporting SDK, and no advertising. See the <a href="privacy.html">privacy policy</a>.</p>
+    <h3>Can I use it with light and dark themes?</h3>
+    <p>Yes — the app follows your system appearance and switches between English and Chinese based on your system language.</p>
+  </section>
+
+  <section>
+    <h2>Still stuck?</h2>
+    <p>Open an issue and include the app version, your iOS version, the connection type, and the exact error text (the app shows a redacted connection diagnostic you can copy):</p>
+    <p><a href="https://github.com/sumanx/fat-fish-site/issues">github.com/sumanx/fat-fish-site/issues</a></p>
+  </section>
+</main>
+<footer>
+  Fat Fish is an independent client and is not affiliated with the vendor of DeepSeek Harness. Product names belong to their respective owners.
+</footer>
+</body>
+</html>

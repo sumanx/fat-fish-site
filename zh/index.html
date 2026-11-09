@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>肥鱼 — 支持</title>
+<meta name="description" content="肥鱼（Fat Fish）技术支持页面：DeepSeek Harness 的原生移动客户端。">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>肥鱼</h1>
+    <nav>
+      <a href="privacy.html">隐私政策</a>
+      <a href="../index.html">English</a>
+    </nav>
+  </header>
+  <p class="lede">DeepSeek Harness（DSH）的原生移动客户端。</p>
+
+  <section>
+    <h2>这个 App 是什么</h2>
+    <p>肥鱼把你的手机连接到你自己运行（或他人为你运行）的 DeepSeek Harness Host。它只是客户端：不提供 AI 服务、没有账号体系、也没有演示内容或隐藏内容。没有配置 Host 时，App 打开是空态，入口是「添加服务」。</p>
+  </section>
+
+  <section>
+    <h2>使用条件</h2>
+    <ul>
+      <li>iOS 15 及以上。</li>
+      <li>一个可访问的 DeepSeek Harness Host：通过 HTTPS 暴露、可经 SSH 访问，或部署在反向代理/中转之后。</li>
+      <li>Host 的地址与连接令牌（走 SSH 时可由 App 从 DSH 启动日志里查找）。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>开始使用</h2>
+    <h3>1. 添加服务</h3>
+    <p>打开左侧栏，点「添加服务」，选择连接方式：</p>
+    <ul>
+      <li><strong>直连</strong>：Host 的 HTTPS 地址 + 连接令牌。自签名证书必须由你核对 SHA-256 指纹后才会信任。</li>
+      <li><strong>SSH</strong>：主机、端口、用户名，以及密码或私钥。App 通过 SSH 登录，从该实例的启动日志查找连接令牌（或使用你填写的），并把请求隧道到该机器的 <code>127.0.0.1</code>。</li>
+      <li><strong>中转</strong>：部署在反向代理之后的 DSH 服务地址。</li>
+    </ul>
+    <h3>2. 选择会话</h3>
+    <p>会话、工作区与文件都来自 Host；本机只保存草稿与导航状态。</p>
+    <h3>3. 聊天</h3>
+    <p>发送消息、回答提问、审批工具调用、跟进后台任务。只有在 Host 连接与本机草稿存储都就绪后，输入框才会激活。</p>
+  </section>
+
+  <section>
+    <h2>常见问题</h2>
+    <h3>需要账号吗？</h3>
+    <p>不需要。没有注册、登录或订阅，你直接连接自己的 Host。</p>
+    <h3>输入框一直是灰的 / 显示「准备中」？</h3>
+    <p>表示连接或本机草稿存储还没就绪。若持续如此，请核对地址与令牌，然后从左侧栏重新连接。</p>
+    <h3>凭证存在哪里？</h3>
+    <p>只存在本机 App 私有存储里，不会上传到别处；删除服务会一并移除其凭证。</p>
+    <h3>为什么要我核对指纹？</h3>
+    <p>因为该证书或 SSH 主机密钥不是公共机构签发的。在你通过独立渠道确认指纹之前，App 不会连接；若之后指纹变化，会再次拒绝。</p>
+    <h3>自签名证书被拒绝怎么办？</h3>
+    <p>改用 SSH 连接方式，或换成受信任机构签发的证书。肥鱼不会静默接受任何证书。</p>
+    <h3>会把数据发到别处吗？</h3>
+    <p>不会。没有分析 SDK、没有崩溃上报、没有广告。详见<a href="privacy.html">隐私政策</a>。</p>
+    <h3>支持深浅色和中文吗？</h3>
+    <p>支持。界面跟随系统外观，并按系统语言在中英文之间切换。</p>
+  </section>
+
+  <section>
+    <h2>仍未解决？</h2>
+    <p>请开一个 issue，并附上 App 版本、iOS 版本、连接方式，以及完整错误文案（App 里有可复制的脱敏连接诊断）：</p>
+    <p><a href="https://github.com/sumanx/fat-fish-site/issues">github.com/sumanx/fat-fish-site/issues</a></p>
+  </section>
+</main>
+<footer>
+  肥鱼是独立客户端，与 DeepSeek Harness 的提供方无隶属关系；相关产品名称归各自所有者所有。
+</footer>
+</body>
+</html>
